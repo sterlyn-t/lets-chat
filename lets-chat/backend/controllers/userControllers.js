@@ -74,7 +74,8 @@ const allUsers = asyncHandler(async (req, res) => {
     } : {};
 
     // Note: cannot consider current user who is logged in
-    const users = await (await User.find(keyword)).find({_id: {$ne:req.user._id}});
+    const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
+    //const users = await (await User.find(keyword)).find({_id: {$ne:req.user._id}});
     res.send(users);
 });
 
